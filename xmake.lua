@@ -8,6 +8,14 @@ set_policy("build.ccache", false)
 
 --add_requires("gtest")
 add_requires("gtest", {system = false, configs = {main = true, gmock = false, shared=false}})
+
+
+
+target("op")
+    set_kind("headeronly")
+    add_headerfiles("include/ObjectsPool.hpp", "include/ObjectsPool.inl", {public=true})
+
+
 -- Iterate over test files and create test targets
 for _, file in ipairs(os.files("tests/*.cpp")) do
     local name = path.basename(file)
@@ -18,6 +26,7 @@ for _, file in ipairs(os.files("tests/*.cpp")) do
         add_files(file)
         add_tests("default")
         add_includedirs("include/", {public = true})
+        --add_deps("op")
         add_includedirs("tests/")
         set_group("test")
 end
