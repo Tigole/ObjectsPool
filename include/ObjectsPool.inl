@@ -86,6 +86,12 @@ ObjectsPool<T, MAX_OBJECT_COUNT>::Iterator& ObjectsPool<T, MAX_OBJECT_COUNT>::It
 }
 
 template<typename T, uint16_t MAX_OBJECT_COUNT>
+ObjectRef ObjectsPool<T, MAX_OBJECT_COUNT>::Iterator::GetRef(void) const
+{
+    return Ref;
+}
+
+template<typename T, uint16_t MAX_OBJECT_COUNT>
 ObjectsPool<T, MAX_OBJECT_COUNT>::Iterator ObjectsPool<T, MAX_OBJECT_COUNT>::Begin()
 {
     return Iterator(*this, BeginUsed());

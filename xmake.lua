@@ -11,7 +11,7 @@ set_warnings("all", "error")
 
 set_policy("build.ccache", false)
 
-add_requires("gtest", {system = false, configs = {main = true, gmock = false, shared=false}})
+add_requires("gtest", {system = false, configs = {main = true, gmock = false, shared = false}})
 
 target("op")
     set_kind("headeronly")

@@ -41,6 +41,8 @@ public:
         bool operator==(const Iterator& other);
         Iterator& operator++();
 
+        ObjectRef GetRef(void) const;
+
     private:
         ObjectsPool& Pool;
         ObjectRef Ref;
