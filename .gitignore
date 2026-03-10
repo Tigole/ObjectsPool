@@ -41,4 +41,5 @@
 *.dwo
 
 .xmake/
+build/
 .vscode/compile_commands.json

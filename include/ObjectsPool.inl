@@ -5,7 +5,7 @@ ObjectRef ObjectsPool<T, MAX_OBJECT_COUNT>::CreateObject(void)
 {
     if (FirstFreeObject == MAX_OBJECT_COUNT)
     {
-        return Nil;
+        return ObjectRef::Nil();
     }
     const uint16_t idx = FirstFreeObject;
 
@@ -34,6 +34,12 @@ void ObjectsPool<T, MAX_OBJECT_COUNT>::DeleteObject(ObjectRef ref)
     {
         FirstFreeObject = ref.Idx;
     }
+}
+
+template<typename T, uint16_t MAX_OBJECT_COUNT>
+void ObjectsPool<T, MAX_OBJECT_COUNT>::Clear(void)
+{
+    memset(this, 0, sizeof(*this));
 }
 
 template<typename T, uint16_t MAX_OBJECT_COUNT>
@@ -105,7 +111,7 @@ ObjectsPool<T, MAX_OBJECT_COUNT>::Iterator ObjectsPool<T, MAX_OBJECT_COUNT>::End
 template<typename T, uint16_t MAX_OBJECT_COUNT>
 ObjectRef ObjectsPool<T, MAX_OBJECT_COUNT>::BeginUsed(void) const
 {
-    return NextUsed(Nil);
+    return NextUsed(ObjectRef::Nil());
 }
 
 template<typename T, uint16_t MAX_OBJECT_COUNT>

@@ -11,6 +11,26 @@ struct ObjectRef
 {
     uint16_t Idx;
     uint16_t Gen;
+
+    static ObjectRef Nil()
+    {
+        return { 0, 0 };
+    }
+
+    bool operator==(ObjectRef other)
+    {
+        return Idx == other.Idx && Gen == other.Gen;
+    }
+
+    bool operator!=(ObjectRef other)
+    {
+        return Idx != other.Idx || Gen != other.Gen;
+    }
+
+    operator bool() const
+    {
+        return Idx != 0;
+    }
 };
 
 template<typename T, uint16_t MAX_OBJECT_COUNT>
@@ -30,6 +50,7 @@ public:
     ObjectRef CreateObject(void);
     T& GetObject(ObjectRef ref);
     void DeleteObject(ObjectRef ref);
+    void Clear(void);
 
     class Iterator
     {
@@ -56,7 +77,6 @@ private:
     ObjectRef BeginUsed(void) const;
     ObjectRef EndUsed(void) const;
     ObjectRef NextUsed(ObjectRef ref) const;
-    const ObjectRef Nil = { 0, 0 };
 };
 
 #include "ObjectsPool.inl"
