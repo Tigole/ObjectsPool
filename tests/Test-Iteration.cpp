@@ -1,3 +1,4 @@
+#include <array>
 #include <bitset>
 
 #include "Test.hpp"
@@ -20,8 +21,8 @@ TEST(Iteration, _)
         *it               = 4;
         loop[loopCounter] = true;
         loopCounter++;
-        EXPECT_EQ(it.GetRef().Idx , loopCounter);
-        EXPECT_EQ(it.GetRef().Gen , 1);
+        EXPECT_EQ(it.GetRef().Idx, loopCounter);
+        EXPECT_EQ(it.GetRef().Gen, 1);
     }
 
     EXPECT_EQ(loopCounter, refs.size());

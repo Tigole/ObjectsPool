@@ -1,5 +1,3 @@
-#include <string.h>
-
 #include "ObjectsPool.hpp"
 
 template<typename T, uint16_t MAX_OBJECT_COUNT>
