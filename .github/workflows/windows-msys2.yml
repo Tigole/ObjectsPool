@@ -35,7 +35,7 @@ jobs:
         uses: xmake-io/github-action-setup-xmake@v1
         
       - name: Configure xmake and install dependencies
-        run: xmake config --arch=${{ matrix.arch }} --mode=${{ matrix.modes }} --yes
+        run: xmake config --arch=${{ matrix.arch }} --mode=${{ matrix.modes }} --policies=build.ccache:y --yes
 
       - name: Build executable
         run: xmake --yes
